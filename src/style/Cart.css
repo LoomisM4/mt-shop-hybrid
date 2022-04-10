@@ -1,0 +1,27 @@
+.cartDiv {
+    font-size: 2em;
+}
+
+.cartDiv button {
+    font-size: xx-large;
+}
+
+.cartItem {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.cartItem .quantity {
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.cartItem .quantity div {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.cartItem .price {
+    text-align: right;
+}

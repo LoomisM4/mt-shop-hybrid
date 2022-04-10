@@ -1,0 +1,27 @@
+.horizontalScroll {
+    display: inline-flex;
+    overflow: auto;
+    box-sizing: border-box;
+}
+
+.image {
+    width: 100vw;
+}
+
+.center {
+    display: block;
+    position: sticky;
+    left: 0;
+    width: 100vw;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.title {
+    font-size: 1.5em;
+    padding: 20px;
+}
+
+button {
+    font-size: 2em;
+}
