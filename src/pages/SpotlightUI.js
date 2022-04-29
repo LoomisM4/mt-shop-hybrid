@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import '../style/Spotlight.css'
+import { useNavigate } from "react-router-dom";
 
 export default function SpotlightUI() {
+    let navigate = useNavigate();
+
     const [articles, setArticles] = useState([])
 
     useEffect(() => {
-        fetch("https://shop.marcelwettach.eu/spotlight")
+        cordovaFetch("https://shop.marcelwettach.eu/spotlight")
             .then(response => response.json())
             .then(response => setArticles(response._embedded.articles))
+            .catch(error => console.log(error))
     }, [])
 
     if (articles.length > 0) {
@@ -26,6 +30,6 @@ export default function SpotlightUI() {
 
     function navigateToDetails(detailsUrl) {
         localStorage.setItem("articleUrl", detailsUrl)
-        window.location = "/article"
+        navigate("/article")
     }
 }

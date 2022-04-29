@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import '../style/ArticleList.css'
+import { useNavigate } from "react-router-dom";
 
 export default function ArticleList() {
+    let navigate = useNavigate();
+
     const [articles, setArticles] = useState([])
 
     useEffect(() => {
         let url = localStorage.getItem("articlesUrl")
-        fetch(url)
+
+        cordovaFetch(url)
             .then(response => response.json())
             .then(response => setArticles(response._embedded.articles))
     }, [])
@@ -27,6 +31,6 @@ export default function ArticleList() {
 
     function navigateToArticle(detailsUrl) {
         localStorage.setItem("articleUrl", detailsUrl)
-        window.location = "/article"
+        navigate("/article")
     }
 }

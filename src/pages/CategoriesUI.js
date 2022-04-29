@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import "../style/Categories.css";
+import { useNavigate } from "react-router-dom";
 
 export default function CategoriesUI() {
+    let navigate = useNavigate();
+
     const [categories, setCategories] = useState([])
     const [error, setError] = useState("Laden...")
 
@@ -10,21 +13,15 @@ export default function CategoriesUI() {
 
     useEffect(() => {
         if (params.categoryId === undefined) {
-            fetch("https://shop.marcelwettach.eu/categories")
+            cordovaFetch("https://shop.marcelwettach.eu/categories")
                 .then(response => response.json())
                 .then(response => setCategories(response._embedded.categories))
-                .catch(error => {
-                    console.log(error)
-                    setError("Laden fehlgeschlagen. Eventuell besteht keine Internetverbindung")
-                })
+                .catch(error => setError("Laden fehlgeschlagen. Eventuell besteht keine Internetverbindung"))
         } else {
-            fetch("https://shop.marcelwettach.eu/category/" + params.categoryId)
+            cordovaFetch("https://shop.marcelwettach.eu/category/" + params.categoryId)
                 .then(response => response.json())
                 .then(response => setCategories(response._embedded.categories))
-                .catch(error => {
-                    console.log(error)
-                    setError("Laden fehlgeschlagen. Eventuell besteht keine Internetverbindung")
-                })
+                .catch(error => setError("Laden fehlgeschlagen. Eventuell besteht keine Internetverbindung"))
         }
     }, [params.categoryId])
 
@@ -49,12 +46,11 @@ export default function CategoriesUI() {
     }
 
     function navigateToSub(categoryId) {
-        console.log(categoryId)
-        window.location = "/categories/" + categoryId
+        navigate("/categories/" + categoryId)
     }
 
     function navigateToArticleList(detailsUrl) {
         localStorage.setItem("articlesUrl", detailsUrl)
-        window.location += "/articles"
+        navigate(navigate.location + "/articles")
     }
 }

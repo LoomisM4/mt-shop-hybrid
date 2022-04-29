@@ -7,7 +7,7 @@ export default function ArticleUI() {
 
     useEffect(() => {
         let url = localStorage.getItem("articleUrl")
-        fetch(url)
+        cordovaFetch(url)
             .then(response => response.json())
             .then(response => setArticle(response))
     }, [])
