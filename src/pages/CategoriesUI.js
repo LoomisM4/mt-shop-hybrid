@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import {useLocation, useParams} from 'react-router-dom';
 import "../style/Categories.css";
 import { useNavigate } from "react-router-dom";
 
 export default function CategoriesUI() {
     let navigate = useNavigate();
+    let location = useLocation();
+    let params = useParams();
 
     const [categories, setCategories] = useState([])
-    const [error, setError] = useState("Laden...")
 
-    let params = useParams()
+    const [error, setError] = useState("Laden...")
 
     useEffect(() => {
         if (params.categoryId === undefined) {
@@ -51,6 +52,6 @@ export default function CategoriesUI() {
 
     function navigateToArticleList(detailsUrl) {
         localStorage.setItem("articlesUrl", detailsUrl)
-        navigate(navigate.location + "/articles")
+        navigate(location.pathname + "/articles")
     }
 }
