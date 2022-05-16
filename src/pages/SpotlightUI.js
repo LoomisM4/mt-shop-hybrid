@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../style/Spotlight.css'
 import { useNavigate } from "react-router-dom";
+import API from "../service/API";
 
 export default function SpotlightUI() {
     let navigate = useNavigate();
@@ -8,8 +9,7 @@ export default function SpotlightUI() {
     const [articles, setArticles] = useState([])
 
     useEffect(() => {
-        cordovaFetch("https://shop.marcelwettach.eu/spotlight")
-            .then(response => response.json())
+        API.spotlight()
             .then(response => setArticles(response._embedded.articles))
             .catch(error => console.log(error))
     }, [])

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../style/ArticleList.css'
 import { useNavigate } from "react-router-dom";
+import API from "../service/API";
 
 export default function ArticleList() {
     let navigate = useNavigate();
@@ -10,8 +11,7 @@ export default function ArticleList() {
     useEffect(() => {
         let url = localStorage.getItem("articlesUrl")
 
-        cordovaFetch(url)
-            .then(response => response.json())
+        API.other(url)
             .then(response => setArticles(response._embedded.articles))
     }, [])
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {useLocation, useParams} from 'react-router-dom';
 import "../style/Categories.css";
 import { useNavigate } from "react-router-dom";
+import API from "../service/API";
 
 export default function CategoriesUI() {
     let navigate = useNavigate();
@@ -13,17 +14,16 @@ export default function CategoriesUI() {
     const [error, setError] = useState("Laden...")
 
     useEffect(() => {
+        let url;
         if (params.categoryId === undefined) {
-            cordovaFetch("https://shop.marcelwettach.eu/categories")
-                .then(response => response.json())
-                .then(response => setCategories(response._embedded.categories))
-                .catch(error => setError("Laden fehlgeschlagen. Eventuell besteht keine Internetverbindung"))
+            url = "https://shop.marcelwettach.eu/categories";
         } else {
-            cordovaFetch("https://shop.marcelwettach.eu/category/" + params.categoryId)
-                .then(response => response.json())
-                .then(response => setCategories(response._embedded.categories))
-                .catch(error => setError("Laden fehlgeschlagen. Eventuell besteht keine Internetverbindung"))
+            url = "https://shop.marcelwettach.eu/category/" + params.categoryId
         }
+
+        API.other(url)
+            .then(response => setCategories(response._embedded.categories))
+            .catch(error => setError("Laden fehlgeschlagen. Eventuell besteht keine Internetverbindung"))
     }, [params.categoryId])
 
     if (categories.length > 0) {

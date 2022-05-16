@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Cart from '../objects/Cart'
 import "../style/Details.css"
+import API from "../service/API";
 
 export default function ArticleUI() {
     const [article, setArticle] = useState()
 
     useEffect(() => {
         let url = localStorage.getItem("articleUrl")
-        cordovaFetch(url)
-            .then(response => response.json())
+        API.other(url)
             .then(response => setArticle(response))
     }, [])
 
