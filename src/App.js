@@ -16,16 +16,16 @@ import ArticleList from './pages/ArticleList';
 
 function App() {
     return (
-      <HashRouter>
-        <div className="App">
-          <Routes>
-            <Route path="/" element={<><Header title={"Spotlight"}/><SpotlightUI/></>}/>
-            <Route path="/categories" element={<><Header title={"Kategorien"}/><CategoriesUI/></>}/>
-            <Route path="/categories/:categoryId" element={<><Header title={"Kategorien"}/><CategoriesUI/></>}/>
-            <Route path="/categories/:categoryId/articles" element={<><Header title={"Artikel"}/><ArticleList/></>}/>
-            <Route path="/cart" element={<><Header title={"Warenkorb"}/><CartUI/></>}/>
-            <Route path="/map" element={<><Header title={"Umgebung"}/><MapUI/></>}/>
-            <Route path="/article" element={<><Header title={"Artikel"}/><ArticleUI/></>}/>
+      <HashRouter> <!-- 1 -->
+        <div className="App"> <!-- 2 -->
+          <Routes> <!-- 1 -->
+            <Route path="/" element={<><Header title={"Spotlight"}/><SpotlightUI/></>}/> <!-- 5 -->
+            <Route path="/categories" element={<><Header title={"Kategorien"}/><CategoriesUI/></>}/> <!-- 5 -->
+            <Route path="/categories/:categoryId" element={<><Header title={"Kategorien"}/><CategoriesUI/></>}/> <!-- 5 -->
+            <Route path="/categories/:categoryId/articles" element={<><Header title={"Artikel"}/><ArticleList/></>}/> <!-- 5 -->
+            <Route path="/cart" element={<><Header title={"Warenkorb"}/><CartUI/></>}/> <!-- 5 -->
+            <Route path="/map" element={<><Header title={"Umgebung"}/><MapUI/></>}/> <!-- 5 -->
+            <Route path="/article" element={<><Header title={"Artikel"}/><ArticleUI/></>}/> <!-- 5 -->
           </Routes>
           <Footer/>
         </div>
@@ -34,3 +34,5 @@ function App() {
 }
 
 export default App;
+
+// 39

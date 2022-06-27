@@ -2,50 +2,52 @@ import React, { useEffect, useState } from 'react';
 import Cart from '../objects/Cart'
 import '../style/Cart.css'
 
-export default function CartUI() {
-    const [articles, setArticles] = useState([])
+export default function CartUI() { // 1
+    const [articles, setArticles] = useState([]) // 2
 
-    useEffect(() => {
-        setArticles(Cart.getCart().articles)
+    useEffect(() => { // 1
+        setArticles(Cart.getCart().articles) // 3
     }, [])
 
-    if (articles.length > 0) {
-        return (
-            <div className={"cartDiv"}>
-                {articles.map(cartArticle => (
-                    <div className={"cartItem"} key={cartArticle.article.articleId}>
-                        <div>{cartArticle.article.name}</div>
-                        <div className={"quantity"}>
-                            <div onClick={() => less(cartArticle)}>-</div>
-                            <div>{cartArticle.quantity}</div>
-                            <div onClick={() => more(cartArticle)}>+</div>
+    if (articles.length > 0) { // 3
+        return ( // 1
+            <div className={"cartDiv"}> <!-- 2 -->
+                {articles.map(cartArticle => ( // 1
+                    <div className={"cartItem"} key={cartArticle.article.articleId}> <!-- 5 -->
+                        <div>{cartArticle.article.name}</div> <!-- 3 -->
+                        <div className={"quantity"}> <!-- 2 -->
+                            <div onClick={() => less(cartArticle)}>-</div> <!-- 3 -->
+                            <div>{cartArticle.quantity}</div> <!-- 2 -->
+                            <div onClick={() => more(cartArticle)}>+</div> <!-- 3 -->
                         </div>
-                        <div className={"price"}>{cartArticle.getPositionPrice().toFixed(2)}</div>
+                        <div className={"price"}>{cartArticle.getPositionPrice().toFixed(2)}</div> <!-- 4 -->
                     </div>
                 ))}
-                <div>
-                    Preis: {Cart.getCart().getTotalPrice().toFixed(2)}
+                <div> <!-- 1 -->
+                    Preis: {Cart.getCart().getTotalPrice().toFixed(2)} <!-- 3 -->
                 </div>
-                <button onClick={sendOrder}>Zahlungspflichtig bestellen</button>
+                <button onClick={sendOrder}>Zahlungspflichtig bestellen</button> <!-- 2 -->
             </div>
         )
-    } else {
-        return <div>Der Warenkorb ist leer</div>
+    } else { // 1
+        return <div>Der Warenkorb ist leer</div> // 2
     }
 
-    function less(cartArticle) {
-        Cart.getCart().removeArticle(cartArticle.article)
-        setArticles(Cart.getCart().articles)
+    function less(cartArticle) { // 1
+        Cart.getCart().removeArticle(cartArticle.article) // 3
+        setArticles(Cart.getCart().articles) // 3
     }
 
-    function more(cartArticle) {
-        Cart.getCart().addArticle(cartArticle.article)
-        setArticles(Cart.getCart().articles)
+    function more(cartArticle) { // 1
+        Cart.getCart().addArticle(cartArticle.article) // 3
+        setArticles(Cart.getCart().articles) // 3
     }
 
-    function sendOrder() {
-        alert("Bestellung erfolgreich abgeschickt")
-        Cart.getCart().clear()
-        setArticles(Cart.getCart().articles)
+    function sendOrder() { // 1
+        alert("Bestellung erfolgreich abgeschickt") // 1
+        Cart.getCart().clear() // 2
+        setArticles(Cart.getCart().articles) // 3
     }
 }
+
+// 66

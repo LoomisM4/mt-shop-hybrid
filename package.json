@@ -1,10 +1,10 @@
 {
-  "name": "io.cordova.hellocordova",
-  "displayName": "HelloCordova",
+  "name": "mt-shop-hybrid",
+  "displayName": "mt-shop-hybrid", // 1
   "version": "1.0.0",
   "description": "A sample Apache Cordova application that responds to the deviceready event.",
   "main": "index.js",
-  "homepage": "./",
+  "homepage": "./", // 1
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && cp -r ./build/* ./www/",
@@ -59,3 +59,5 @@
     ]
   }
 }
+
+// 2

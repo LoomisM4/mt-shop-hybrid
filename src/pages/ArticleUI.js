@@ -3,37 +3,39 @@ import Cart from '../objects/Cart'
 import "../style/Details.css"
 import API from "../service/API";
 
-export default function ArticleUI() {
-    const [article, setArticle] = useState()
+export default function ArticleUI() { // 1
+    const [article, setArticle] = useState() // 2
 
-    useEffect(() => {
-        let url = localStorage.getItem("articleUrl")
-        API.other(url)
-            .then(response => setArticle(response))
+    useEffect(() => { // 1
+        let url = localStorage.getItem("articleUrl") // 2
+        API.other(url) // 1
+            .then(response => setArticle(response)) // 2
     }, [])
 
-    if (article == null) {
-        return <div>Laden...</div>
-    } else {
-        return (
-            <div>
-                <div className={"horizontalScroll"}>
-                    {article._links.images.map(i => (
-                        <div className={"image"} key={i.id}>
-                            <img src={i.href} alt={""}/>
+    if (article == null) { // 2
+        return <div>Laden...</div> // 2
+    } else { // 1
+        return ( // 1
+            <div> <!-- 1 -->
+                <div className={"horizontalScroll"}> <!-- 2 -->
+                    {article._links.images.map(i => ( <!-- 3 -->
+                        <div className={"image"} key={i.id}> <!-- 4 -->
+                            <img src={i.href} alt={""}/> <!-- 4 -->
                         </div>
                     ))}
                 </div>
-                <div className={"center"}>
-                    <button onClick={addToCart}>In den Warenkorb</button>
-                    <div className={"title"}>{article.name}</div>
-                    <div>{article.description}</div>
+                <div className={"center"}> <!-- 2 -->
+                    <button onClick={addToCart}>In den Warenkorb</button> <!-- 2 -->
+                    <div className={"title"}>{article.name}</div> <!-- 3 -->
+                    <div>{article.description}</div> <!-- 2 -->
                 </div>
             </div>
         )
     }
 
-    function addToCart() {
-        Cart.getCart().addArticle(article)
+    function addToCart() { // 1
+        Cart.getCart().addArticle(article) // 2
     }
 }
+
+// 41

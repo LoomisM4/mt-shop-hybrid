@@ -1,4 +1,6 @@
-.articleList {
-    display: grid;
-    grid-template-columns: auto auto;
+.articleList { /* 1 */
+    display: grid; /* 1 */
+    grid-template-columns: auto auto; /* 1 */
 }
+
+/* 3 */

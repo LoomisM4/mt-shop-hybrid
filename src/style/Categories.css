@@ -1,5 +1,7 @@
-.menuItem {
-    border-bottom: solid black 1px;
-    font-size: 2em;
-    padding: 5px;
+.menuItem { /* 1 */
+    border-bottom: solid black 1px; /* 1 */
+    font-size: 2em; /* 1 */
+    padding: 5px; /* 1 */
 }
+
+/* 4 */

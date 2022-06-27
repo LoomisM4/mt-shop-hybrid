@@ -1,18 +1,20 @@
-footer {
-    display: flex;
-    position: sticky;
-    bottom: 0;
-    width: 100vw;
-    height: 50px;
-    background-color: white;
-    border-top: 1px solid black;
+footer { /* 1 */
+    display: flex; /* 1 */
+    position: sticky; /* 1 */
+    bottom: 0; /* 1 */
+    width: 100vw; /* 1 */
+    height: 50px; /* 1 */
+    background-color: white; /* 1 */
+    border-top: 1px solid black; /* 1 */
 }
 
-.navLink {
-    display: flex;
-    width: 25%;
+.navLink { /* 1 */
+    display: flex; /* 1 */
+    width: 25%; /* 1 */
 }
 
-.navLink div {
-    margin: auto;
+.navLink div { /* 1 */
+    margin: auto; /* 1 */
 }
+
+/* 13 */

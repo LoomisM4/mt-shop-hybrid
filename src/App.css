@@ -1,10 +1,12 @@
-.App {
-    display: grid;
-    display: -moz-grid;
-    display: -ms-grid;
-    grid-template-columns: auto;
-    grid-template-rows: 50px auto 50px;
-    min-height: 100%;
-    max-height: auto;
-    cursor: default;
+.App { /* 1 */
+    display: grid; /* 1 */
+    display: -moz-grid; /* 1 */
+    display: -ms-grid; /* 1 */
+    grid-template-columns: auto; /* 1 */
+    grid-template-rows: 50px auto 50px; /* 1 */
+    min-height: 100%; /* 1 */
+    max-height: auto; /* 1 */
+    cursor: default; /* 1 */
 }
+
+/* 9 */
